@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Оқу жоспары</title>
+    <style>
+        body { background-color: #1a4a8e; font-family: sans-serif; color: white; padding: 40px; }
+        .plan-card { background: white; color: #333; padding: 20px; border-radius: 15px; max-width: 600px; margin: auto; }
+        .topic { border-bottom: 1px solid #eee; padding: 10px 0; display: flex; align-items: center; }
+        .number { background: #3776ab; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; }
+        .back-btn { display: inline-block; margin-bottom: 20px; color: white; text-decoration: none; }
+    </style>
+</head>
+<body>
+     <button class="dark-mode-toggle" id="dark-mode-toggle">
+    <span id="mode-icon">🌙</span>
+</button>
+    <a href="index.html" class="back-btn">⬅ Басты бетке қайту</a>
+    <div class="plan-card">
+        <h2 style="text-align: center; color: #1a4a8e;">7-сынып оқу бағдарламасы</h2>
+        <div class="topic"><div class="number">1</div> Кіріспе. Python орнату</div>
+        <div class="topic"><div class="number">2</div> Айнымалылар және деректер типтері</div>
+        <div class="topic"><div class="number">3</div> Арифметикалық амалдар</div>
+        <div class="topic"><div class="number">4</div> Тармақталу операторлары (if, else)</div>
+        <div class="topic"><div class="number">5</div> Циклдер (for, while)</div>
+    </div>
+    <script>
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    const modeIcon = document.getElementById('mode-icon');
+    const body = document.body;
+
+    // Бет жүктелгенде бұрынғы таңдауды тексеру
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        body.classList.add('dark-mode');
+        modeIcon.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('dark-mode', 'enabled');
+            modeIcon.textContent = '☀️';
+        } else {
+            localStorage.setItem('dark-mode', 'disabled');
+            modeIcon.textContent = '🌙';
+        }
+    });
+</script>
+</body>
+</html>

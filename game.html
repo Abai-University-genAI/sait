@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Ойыны - Санды тап</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .game-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        input[type="number"] {
+            padding: 10px;
+            width: 80px;
+            font-size: 18px;
+            border: 2px solid #3776ab;
+            border-radius: 5px;
+        }
+        .game-btn {
+            padding: 10px 20px;
+            background: #3776ab;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .message { margin-top: 20px; font-weight: bold; min-height: 24px; }
+    </style>
+</head>
+<body>
+     <button class="dark-mode-toggle" id="dark-mode-toggle">
+    <span id="mode-icon">🌙</span>
+</button>
+    <header>
+        <h1>Интерактивті ойын</h1>
+        <p>Пайтон алгоритмі бойынша жұмыс істейтін ойын</p>
+    </header>
+
+    <div class="container">
+        <div class="game-container">
+            <h2>Санды тап!</h2>
+            <p>Мен 1 мен 100 арасында сан жасырдым. Тауып көрші?</p>
+            <input type="number" id="guessInput" placeholder="0">
+            <button class="game-btn" onclick="checkGuess()">Тексеру</button>
+            <div id="gameMessage" class="message"></div>
+            <button class="game-btn" onclick="resetGame()" style="margin-top:15px; background:#28a745;">Қайта бастау</button>
+        </div>
+        <a href="index.html" class="back-btn">⬅ Басты бетке қайту</a>
+    </div>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = document.getElementById('guessInput').value;
+            const message = document.getElementById('gameMessage');
+            attempts++;
+
+            if (userGuess == randomNumber) {
+                message.style.color = "green";
+                message.innerHTML = `Құттықтаймын! Сен ${attempts} әрекеттен таптың!`;
+            } else if (userGuess > randomNumber) {
+                message.style.color = "orange";
+                message.innerHTML = "Кішірек сан жаз...";
+            } else {
+                message.style.color = "orange";
+                message.innerHTML = "Үлкенірек сан жаз...";
+            }
+        }
+
+        function resetGame() {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            attempts = 0;
+            document.getElementById('gameMessage').innerHTML = "";
+            document.getElementById('guessInput').value = "";
+        }
+    </script>
+    <script>
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    const modeIcon = document.getElementById('mode-icon');
+    const body = document.body;
+
+    // Бет жүктелгенде бұрынғы таңдауды тексеру
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        body.classList.add('dark-mode');
+        modeIcon.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('dark-mode', 'enabled');
+            modeIcon.textContent = '☀️';
+        } else {
+            localStorage.setItem('dark-mode', 'disabled');
+            modeIcon.textContent = '🌙';
+        }
+    });
+</script>
+</body>
+</html>

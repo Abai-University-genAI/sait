@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Кері байланыс</title>
+    <style>
+        body { background-color: #1a4a8e; font-family: sans-serif; color: white; padding: 40px; transition: 0.3s; }
+        .form-box { background: white; color: #333; padding: 30px; border-radius: 15px; max-width: 500px; margin: auto; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        
+        /* Батырма стилі */
+        .voice-btn { 
+            background: #28a745; color: white; border: none; padding: 15px; 
+            border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-top: 10px;
+        }
+        .voice-btn.recording { background: #dc3545; animation: blink 1s infinite; }
+        
+        @keyframes blink {
+            0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; }
+        }
+
+        .audio-preview { width: 100%; margin-top: 15px; display: none; }
+        .dark-mode-toggle { background: none; border: 1px solid white; color: white; cursor: pointer; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<button class="dark-mode-toggle" id="dark-mode-toggle">🌙 Режимді өзгерту</button>
+
+<div class="form-box">
+    <h2 style="color: #1a4a8e;">Кері байланыс</h2>
+    <form id="feedbackForm">
+        <input type="text" placeholder="Атыңыз" required>
+        <textarea id="messageText" rows="4" placeholder="Хабарламаңыз..."></textarea>
+        
+        <button type="button" id="voiceBtn" class="voice-btn">
+            <span id="micIcon">🎤</span> <span id="btnText">Микрофонды қосу және жазу</span>
+        </button>
+
+        <audio id="audioPlayback" class="audio-preview" controls></audio>
+        
+        <button type="submit" style="background: #1a4a8e; margin-top: 20px; color: white; border: none; padding: 12px; border-radius: 5px; width: 100%;">Жіберу</button>
+    </form>
+</div>
+
+<script>
+    let mediaRecorder;
+    let audioChunks = [];
+    const voiceBtn = document.getElementById('voiceBtn');
+    const btnText = document.getElementById('btnText');
+    const audioPlayback = document.getElementById('audioPlayback');
+
+    voiceBtn.addEventListener('click', async () => {
+        // 1. РҰҚСАТ СҰРАУ ЖӘНЕ ЖАЗУДЫ БАСТАУ
+        if (!mediaRecorder || mediaRecorder.state === "inactive") {
+            try {
+                // Браузерден микрофонға рұқсат сұрау (Осы жерде терезе шығуы тиіс)
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = (e) => audioChunks.push(e.data);
+                
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    audioPlayback.src = audioUrl;
+                    audioPlayback.style.display = 'block';
+                    
+                    // Микрофонды өшіру (батареяны сақтау үшін)
+                    stream.getTracks().forEach(track => track.stop());
+                };
+
+                mediaRecorder.start();
+                voiceBtn.classList.add('recording');
+                btnText.textContent = "Тоқтату";
+                document.getElementById('micIcon').textContent = "🛑";
+
+            } catch (err) {
+                console.error("Микрофон қатесі:", err);
+                alert("Қате: Микрофонға рұқсат берілмеді немесе ол табылмады. Егер HTTPS қолданбасаңыз, рұқсат терезесі шықпайды.");
+            }
+        } 
+        // 2. ЖАЗУДЫ ТОҚТАТУ
+        else {
+            mediaRecorder.stop();
+            voiceBtn.classList.remove('recording');
+            btnText.textContent = "Қайта жазу";
+            document.getElementById('micIcon').textContent = "🎤";
+        }
+    });
+
+    // Dark Mode логикасы
+    document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        // Түнгі режим стильдерін бағанағыдай қосуға болады
+    });
+</script>
+
+</body>
+</html>

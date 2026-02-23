@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Практикалық жұмыс</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .task-card {
+            background: #ffffff;
+            margin-bottom: 30px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        /* Деңгейлерге арналған түстер */
+        .level-a { border-left: 5px solid #28a745; } /* Жасыл - Оңай */
+        .level-b { border-left: 5px solid #ffc107; } /* Сары - Орташа */
+        .level-c { border-left: 5px solid #dc3545; } /* Қызыл - Қиын */
+
+        code {
+            display: block;
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            white-space: pre;
+        }
+        .task-title {
+            color: #3776ab;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .level-tag {
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        .tag-a { background: #e8f5e9; color: #2e7d32; }
+        .tag-b { background: #fffde7; color: #f9a825; }
+        .tag-c { background: #ffebee; color: #c62828; }
+
+        /* Жауап батырмасының стилі */
+        .answer-btn {
+            display: inline-block;
+            background-color: #3776ab;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .answer-btn:hover {
+            background-color: #2b5b84;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #3776ab;
+        }
+    </style>
+</head>
+<body>
+     <button class="dark-mode-toggle" id="dark-mode-toggle">
+    <span id="mode-icon">🌙</span>
+</button>
+    <header style="text-align: center; padding: 20px; background: #1a4a8e; color: white;">
+        <h1>Практикалық жұмыс</h1>
+        <p>Кодты іс жүзінде қолданып үйрен</p>
+    </header>
+
+    <div class="container" style="max-width: 800px; margin: 30px auto; padding: 0 20px;">
+        
+        <div class="task-card level-a">
+            <span class="level-tag tag-a">A Деңгейі (Оңай)</span>
+            <div class="task-title">№1 Тапсырма: Сәлемдесу</div>
+            <p>Пайдаланушыдан атын сұрап, оған "Сәлем, [аты]!" деп жауап беретін код жаз.</p>
+            <a href="answer3.html" class="answer-btn">Жауабын көру</a>
+        </div>
+
+        <div class="task-card level-b">
+            <span class="level-tag tag-b">B Деңгейі (Орташа)</span>
+            <div class="task-title">№2 Тапсырма: Сандарды салыстыру</div>
+            <p>Екі сан енгізіледі. Солардың қайсысы үлкен екенін анықтаңыз.</p>
+            <a href="answer4.html" class="answer-btn">Жауабын көру</a>
+        </div>
+
+        <div class="task-card level-c">
+            <span class="level-tag tag-c">C Деңгейі (Қиын)</span>
+            <div class="task-title">№3 Тапсырма: For циклі</div>
+            <p>1-ден 10-ға дейінгі сандардың көбейту кестесін шығарыңыз.</p>
+            <a href="answer5.html" class="answer-btn">Жауабын көру</a>
+        </div>
+
+        <br>
+        <a href="index.html" class="back-btn">⬅ Басты бетке қайту</a>
+    </div>
+    <script>
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    const modeIcon = document.getElementById('mode-icon');
+    const body = document.body;
+
+    // Бет жүктелгенде бұрынғы таңдауды тексеру
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        body.classList.add('dark-mode');
+        modeIcon.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('dark-mode', 'enabled');
+            modeIcon.textContent = '☀️';
+        } else {
+            localStorage.setItem('dark-mode', 'disabled');
+            modeIcon.textContent = '🌙';
+        }
+    });
+</script>
+</body>
+</html>

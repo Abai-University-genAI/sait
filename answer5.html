@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>№5 Тапсырма Жауабы</title>
+    <style>
+        body { background-color: #1a4a8e; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .answer-box { background: white; color: #333; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); max-width: 500px; width: 90%; }
+        code { display: block; background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; margin: 15px 0; white-space: pre; }
+        .back-link { display: inline-block; margin-top: 20px; color: #1a4a8e; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+     <button class="dark-mode-toggle" id="dark-mode-toggle">
+    <span id="mode-icon">🌙</span>
+</button>
+    <div class="answer-box">
+        <h2>№5 Тапсырма жауабы:</h2>
+        <p>Көбейту кестесі (5 саны үшін мысал):</p>
+        <code>
+san = 5
+for i in range(1, 11):
+    print(san, "x", i, "=", san * i)
+        </code>
+        <a href="practice.html" class="back-link">⬅ Тапсырмаға қайту</a>
+    </div>
+    <script>
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    const modeIcon = document.getElementById('mode-icon');
+    const body = document.body;
+
+    // Бет жүктелгенде бұрынғы таңдауды тексеру
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        body.classList.add('dark-mode');
+        modeIcon.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('dark-mode', 'enabled');
+            modeIcon.textContent = '☀️';
+        } else {
+            localStorage.setItem('dark-mode', 'disabled');
+            modeIcon.textContent = '🌙';
+        }
+    });
+</script>
+</body>
+</html>

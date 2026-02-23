@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Python: Электронды оқулық</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <button class="dark-mode-toggle" id="dark-mode-toggle">
+    <span id="mode-icon">🌙</span>
+</button>
+
+    <header>
+        <h1>Python тілінде алгоритмдерді программалау</h1>
+        <p>7-сыныпқа арналған мультимедиялық көмекші</p>
+    </header>
+    <div class="container">
+        <nav class="menu-grid">
+            <a href="kmj.html" class="card">
+                <div class="icon">📄</div>
+                <h3>ҚМЖ</h3>
+                <p>Қысқа мерзімді жоспарлар</p>
+            </a>
+            
+            <a href="sabaq.html" class="card">
+                <div class="icon">📘</div>
+                <h3>Сабақ барысы</h3>
+                <p>Теориялық мәліметтер</p>
+            </a>
+
+            <a href="practice.html" class="card">
+                <div class="icon">💻</div>
+                <h3>Практикалық жұмыс</h3>
+                <p>Код жазып үйрену</p>
+            </a>
+
+            <a href="test.html" class="card">
+                <div class="icon">📝</div>
+                <h3>Тест</h3>
+                <p>Біліміңді тексер</p>
+            </a>
+
+            <a href="video.html" class="card">
+                <div class="icon">🎥</div>
+                <h3>Видео ролик</h3>
+                <p>Көрнекі сабақтар</p>
+            </a>
+
+            <a href="game.html" class="card">
+                <div class="icon">🎮</div>
+                <h3>Ойын</h3>
+                <p>Логикалық ойын ойнау</p>
+            </a>
+
+            <a href="glossary.html" class="card">
+                <div class="icon">📖</div>
+                <h3>Глоссарий</h3>
+                <p>Терминдер сөздігі</p>
+            </a>
+
+            <a href="curriculum.html" class="card">
+                <div class="icon">📅</div>
+                <h3>Оқу жоспары</h3>
+                <p>Тақырыптар тізімі</p>
+            </a>
+
+            <a href="contact.html" class="card">
+                <div class="icon">💬</div>
+                <h3>Кері байланыс</h3>
+                <p>Сұрақтар мен ұсыныстар</p>
+            </a>
+        </nav>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Информатика пәні. Барлық құқықтар қорғалған.</p>
+    </footer>
+    <script>
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    const modeIcon = document.getElementById('mode-icon');
+    const body = document.body;
+
+    // Бет жүктелгенде бұрынғы таңдауды тексеру
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        body.classList.add('dark-mode');
+        modeIcon.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('dark-mode', 'enabled');
+            modeIcon.textContent = '☀️';
+        } else {
+            localStorage.setItem('dark-mode', 'disabled');
+            modeIcon.textContent = '🌙';
+        }
+    });
+</script>
+
+</body>
+</html>

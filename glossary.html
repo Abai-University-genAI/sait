@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Глоссарий - Python</title>
+    <style>
+        body { background-color: #1a4a8e; font-family: sans-serif; color: white; padding: 40px; }
+        .container { max-width: 800px; margin: auto; background: white; color: #333; padding: 20px; border-radius: 15px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #3776ab; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .back-btn { display: inline-block; margin-bottom: 20px; color: white; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+     <button class="dark-mode-toggle" id="dark-mode-toggle">
+    <span id="mode-icon">🌙</span>
+</button>
+    <a href="index.html" class="back-btn">⬅ Басты бетке қайту</a>
+    <div class="container">
+        <h2 style="color: #1a4a8e; text-align: center;">Python терминдер сөздігі</h2>
+        <table>
+            <tr>
+                <th>Термин</th>
+                <th>Анықтамасы</th>
+            </tr>
+            <tr>
+                <td><b>Айнымалы (Variable)</b></td>
+                <td>Мәліметтерді сақтауға арналған атауы бар орын.</td>
+            </tr>
+            <tr>
+                <td><b>Цикл (Loop)</b></td>
+                <td>Әрекеттердің бірнеше рет қайталануы.</td>
+            </tr>
+            <tr>
+                <td><b>Шарт (Condition)</b></td>
+                <td>Бағдарламаның белгілі бір жағдайға байланысты таңдау жасауы.</td>
+            </tr>
+            <tr>
+                <td><b>Функция</b></td>
+                <td>Нақты бір тапсырманы орындайтын код бөлігі.</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    const modeIcon = document.getElementById('mode-icon');
+    const body = document.body;
+
+    // Бет жүктелгенде бұрынғы таңдауды тексеру
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        body.classList.add('dark-mode');
+        modeIcon.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('dark-mode', 'enabled');
+            modeIcon.textContent = '☀️';
+        } else {
+            localStorage.setItem('dark-mode', 'disabled');
+            modeIcon.textContent = '🌙';
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Видео сабақ - Python</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .video-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 қатынасы */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .video-description {
+            text-align: left;
+            margin-top: 20px;
+            padding: 10px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #3776ab;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            background-color: #ffd43b;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <button class="dark-mode-toggle" id="dark-mode-toggle">
+    <span id="mode-icon">🌙</span>
+</button>
+
+    <header>
+        <h1>Видео сабақтар</h1>
+        <p>Python тілінде программалау негіздері</p>
+    </header>
+
+    <div class="container">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <iframe src="videoplayback.mp4" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            
+            <div class="video-description">
+                <h3>Python тілінде алгоритмдерді программалау</h3>
+                <p>Бұл видеода 7-сынып бағдарламасына сәйкес Python тілінің негізгі алгоритмдері мен практикалық қолданылуы көрсетілген.</p>
+            </div>
+
+            <a href="index.html" class="back-btn">⬅ Басты бетке қайту</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Информатика пәні</p>
+    </footer>
+    <script>
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    const modeIcon = document.getElementById('mode-icon');
+    const body = document.body;
+
+    // Бет жүктелгенде бұрынғы таңдауды тексеру
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        body.classList.add('dark-mode');
+        modeIcon.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('dark-mode', 'enabled');
+            modeIcon.textContent = '☀️';
+        } else {
+            localStorage.setItem('dark-mode', 'disabled');
+            modeIcon.textContent = '🌙';
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>ҚМЖ - Пайтон тілінде алгоритмді программалау</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .kmj-paper {
+            background: white;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 950px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: left;
+            line-height: 1.6;
+        }
+        .header-info { text-align: center; margin-bottom: 30px; }
+        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        .info-table td { border: 1px solid #000; padding: 10px; vertical-align: top; }
+        .main-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .main-table th, .main-table td { border: 1px solid #000; padding: 8px; font-size: 14px; }
+        .main-table th { background: #f2f2f2; text-align: center; }
+        .section-header { background: #3776ab; color: white; padding: 10px; margin-top: 20px; }
+        .code-block { background: #f4f4f4; padding: 10px; border-left: 3px solid #3776ab; font-family: monospace; }
+    </style>
+</head>
+<body>
+     <button class="dark-mode-toggle" id="dark-mode-toggle">
+    <span id="mode-icon">🌙</span>
+</button>
+
+    <header>
+        <h1>Қысқа мерзімді сабақ жоспары</h1>
+    </header>
+
+    <div class="container">
+        <div class="kmj-paper">
+            <div class="header-info">
+                <h2>Пәні: Информатика</h2>
+                <h3>Тақырыбы: Пайтон тілінде алгоритмді программалау</h3>
+            </div>
+
+            <table class="info-table">
+                <tr>
+                    <td><strong>Сынып:</strong> 7</td>
+                    <td><strong>Сабақ түрі:</strong> Аралас сабақ (теория + практика)</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <strong>Мақсаты:</strong><br>
+                        1. Оқушыларға алгоритм түсінігін және оны Пайтон тілінде жүзеге асыру жолдарын көрсету.<br>
+                        2. Логикалық ойлау дағдыларын дамыту.<br>
+                        3. Пайтон тілінде қарапайым бағдарламаларды құрастыруға үйрету.
+                    </td>
+                </tr>
+            </table>
+
+            <h3 class="section-header">Сабақ барысы</h3>
+            <table class="main-table">
+                <thead>
+                    <tr>
+                        <th>Уақыты</th>
+                        <th>Сабақ кезеңі</th>
+                        <th>Мұғалім әрекеті</th>
+                        <th>Оқушы әрекеті</th>
+                        <th>Ресурстар</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5 мин</td>
+                        <td>Ұйымдастыру</td>
+                        <td>Сәлемдесу, сабақ мақсатымен таныстыру</td>
+                        <td>Сабаққа дайындық</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>10 мин</td>
+                        <td>Теориялық бөлім</td>
+                        <td>Алгоритм және программалау туралы түсіндіру. Пайтон ерекшеліктерін көрсету.</td>
+                        <td>Тыңдау, сұрақ қою</td>
+                        <td>Слайд, тақта</td>
+                    </tr>
+                    <tr>
+                        <td>15 мин</td>
+                        <td>Алгоритм түрлері</td>
+                        <td>Сызықтық, тармақталған және циклдік алгоритмдерді түсіндіру.</td>
+                        <td>Дәптерге мысалдар жазу</td>
+                        <td>Слайд, тақта</td>
+                    </tr>
+                    <tr>
+                        <td>10 мин</td>
+                        <td>Видео ролик</td>
+                        <td>Қарапайым алгоритм мысалын көрсету (сандарды қосу).</td>
+                        <td>Көру, жазып алу</td>
+                        <td>Проектор, Видео</td>
+                    </tr>
+                    <tr>
+                        <td>25 мин</td>
+                        <td>Практикалық жұмыс</td>
+                        <td>Есептер: 2 сан қосындысы, үлкен санды табу, цикл.</td>
+                        <td>Компьютерде код жазу</td>
+                        <td>Python IDE</td>
+                    </tr>
+                    <tr>
+                        <td>10 мин</td>
+                        <td>Тест</td>
+                        <td>Теория және практикалық сұрақтар.</td>
+                        <td>Жауап беру</td>
+                        <td>Google Form</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="section-header">Практикалық тапсырма мысалы</h3>
+            <div class="code-block">
+                # Екі санның қосындысын табу<br>
+                a = int(input("Бірінші санды енгізіңіз: "))<br>
+                b = int(input("Екінші санды енгізіңіз: "))<br>
+                print("Қосынды:", a + b)
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="index.html" class="back-btn">⬅ Басты бетке қайту</a>
+            </div>
+        </div>
+    </div>
+    <script>
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    const modeIcon = document.getElementById('mode-icon');
+    const body = document.body;
+
+    // Бет жүктелгенде бұрынғы таңдауды тексеру
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        body.classList.add('dark-mode');
+        modeIcon.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('dark-mode', 'enabled');
+            modeIcon.textContent = '☀️';
+        } else {
+            localStorage.setItem('dark-mode', 'disabled');
+            modeIcon.textContent = '🌙';
+        }
+    });
+</script>
+
+</body>
+</html>
